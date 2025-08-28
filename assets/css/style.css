@@ -67,6 +67,12 @@ i {
   color: var(--cor-icone);
 }
 
+button {
+  border: var(--cor-texto) 1px solid;
+  background: none;
+  cursor: pointer;
+}
+
 body {
   background-color: var(--cor-fundo-primário);
 
