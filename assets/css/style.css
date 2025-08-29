@@ -38,14 +38,13 @@
 
 html {
   scroll-behavior: smooth;
-
+  
 }
 
 .container {
-  /* ajuste conforme o layout desejado */
   margin: 0 auto;
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 #home,
@@ -75,6 +74,7 @@ button {
 
 body {
   background-color: var(--cor-fundo-primário);
+  transition: all 0.3s ease-in-out;
 
 }
 
@@ -155,6 +155,7 @@ h4 {
 .logo {
   width: 15rem;
   height: auto;
+  pointer-events: none;
 }
 
 #header {
@@ -168,6 +169,7 @@ h4 {
   z-index: 100;
   position: fixed;
   background-color: var(--cor-fundo-secundário);
+  transition: all 0.3s ease-in-out;
 }
 
 .header-logo {
@@ -465,6 +467,7 @@ h4 {
   object-position: center;
   border-radius: 1rem;
   height: auto;
+  pointer-events: none;
 }
 
 .card-body {
@@ -896,18 +899,218 @@ h4 {
   justify-content: center;
 }
 
+.footer-container i {
+  padding-left: .5rem;
+}
+
+.footer-container a:hover,
+.footer-container a:hover i {
+  color: var(--cor-hover);
+  transition: all 0.3s ease-in-out;
+
+}
+
+/* Páginas produtos */
+
+
+/* Barra de pesquisa */
+/* Barra de pesquisa */
+.barra-pesquisa {
+  margin: 2rem auto 3rem;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  background-color: transparent;
+}
+
+.barra-pesquisa i {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--cor-icone);
+}
+
+.barra-pesquisa input {
+  width: 100%;
+  padding: 0.9rem 1.2rem 0.9rem 2.8rem; /* espaço extra à esquerda pro ícone */
+  font-size: 1rem;
+  border: 2px solid var(--cor-fundo-secundário);
+  border-radius: 0.8rem;
+  font-family: var(--fonte-textos);
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: var(--cor-fundo-secundário);
+  color: var(--cor-texto);
+}
+
+.barra-pesquisa input:focus {
+  border-color: var(--cor-azul-contato);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.mensagem-nao-encontrado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* centraliza horizontal */
+  justify-content: center; /* se precisar centralizar vertical */
+  text-align: center;      /* garante que o texto quebra centralizado */
+  max-width: 600px;        /* largura máxima para não ficar muito largo */
+  margin: 2rem auto;       /* centraliza o bloco no meio da tela */
+  font-size: 1.5rem;
+  font-family: var(--fonte-textos);
+  color: var(--cor-icone);
+  line-height: 1.6;
+}
+
+.mensagem-nao-encontrado i {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: var(--cor-azul-contato);
+}
+
+.mensagem-botao {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+.mensagem-botao .btn {
+  padding: 1rem 2rem;     /* mais alto e mais largo */
+  font-size: 1.2rem;      /* aumenta o texto */
+  border-radius: 1rem;    /* cantos mais suaves */
+}
+
+.mensagem-botao .btn i {
+  font-size: 1.3rem;      /* ícone maior */
+}
+
+
+/* FIM DA BARRA */
+
+
+.produtos-page {
+  padding-top: 7rem;
+  text-align: center;
+}
+
+.produtos-page h1 {
+  font-family: var(--fonte-titulos2);
+  font-size: 3rem;
+  color: var(--cor-texto);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+}
+
+.produtos-page .descricao {
+  font-size: 1.2rem;
+  color: var(--cor-icone);
+  margin-bottom: 3rem;
+  font-family: var(--fonte-textos);
+}
+
+/* Grid */
+.grid-produtos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+/* Card Produto */
+
+.produtos-page {
+  padding-bottom: 4rem; /* cria espaço no final */
+}
+
+.produto-card {
+  background-color: var(--cor-fundo-secundário);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.produto-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.produto-img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  pointer-events: none;
+
+}
+
+.produto-titulo {
+  font-size: 1.5rem;
+  font-family: var(--fonte-titulos2);
+  margin-bottom: 0.5rem;
+  color: var(--cor-texto);
+}
+
+.produto-texto {
+  font-size: 1rem;
+  color: var(--cor-texto);
+  font-family: var(--fonte-textos);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.produto-card .btn {
+  margin-top: auto;  /* empurra o botão para a base */
+  align-self: center;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .grid-produtos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-produtos {
+    grid-template-columns: 1fr;
+  }
+  .produtos-page h1 {
+    font-size: 2rem;
+    letter-spacing: 3px;
+  }
+}
+
+
 
 
 /* Responsivo */
 
+@media (min-width: 768px) {
+  
+}
+
 @media (max-width: 768px) {
 
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
   h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
 
   .subtitulo-h1 {
-    font-size: 2rem;
+    font-size: 1.41rem;
+    padding-top: 1rem;
   }
 
   .video iframe {
@@ -991,13 +1194,32 @@ h4 {
     display: flex;
     flex-direction: column;
   }
+
+  .produtos-card, .produtos-card2 {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .card-cover {
+    width: 100%;
+    height: auto;
+  }
 }
 
+
 @media (max-width: 480px) {
-.container {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
+
+  #header {
+    padding: 0.5rem 1rem;
+  }
+
+  .logo {
+    width: 10rem;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 
   h1 {
     font-size: 1.5rem;
@@ -1025,7 +1247,7 @@ h4 {
     font-size: 1.8rem;
   }
 
-  .sobre-logo{
+  .sobre-logo {
     width: 80%;
     height: auto;
   }
@@ -1039,21 +1261,19 @@ h4 {
   }
 
   .contato-container {
-    display: flex;              /* troca o grid pelo flex */
-    flex-direction: column;     /* empilha os itens */
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    gap: 1.5rem;                /* dá respiro entre os blocos */
-    min-height: auto;           /* remove altura fixa para evitar corte */
+    gap: 1.5rem;
+    min-height: auto;
   }
 
   .form-row {
-    grid-template-columns: 1fr; /* inputs ficam um abaixo do outro */
+    grid-template-columns: 1fr;
+    /* inputs ficam um abaixo do outro */
   }
 
   .footer-container {
     font-size: 0.9rem;
   }
-
-
 }
-

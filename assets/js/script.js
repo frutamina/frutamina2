@@ -42,3 +42,36 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+/* BARRA DE PESQUISA PÁGINA DE PRODUTOS */
+
+function filtrarProdutos() {
+  let input = document.getElementById("pesquisaProduto").value.toLowerCase();
+  let cards = document.querySelectorAll(".produto-card");
+  let mensagem = document.getElementById("mensagemNaoEncontrado");
+  let botao = document.getElementById("botaoContatoNaoEncontrado");
+
+  let encontrou = false;
+
+  cards.forEach(card => {
+    let titulo = card.querySelector(".produto-titulo").innerText.toLowerCase();
+    let texto = card.querySelector(".produto-texto").innerText.toLowerCase();
+
+    if (titulo.includes(input) || texto.includes(input)) {
+      card.style.display = "flex";
+      encontrou = true;
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+  // Se não encontrou nada, mostra mensagem + botão
+  if (!encontrou && input.trim() !== "") {
+    mensagem.style.display = "flex";
+    botao.style.display = "flex";
+  } else {
+    mensagem.style.display = "none";
+    botao.style.display = "none";
+  }
+}
+
