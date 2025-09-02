@@ -47,9 +47,9 @@
     <p class="descricao">Frutas frescas e selecionadas, direto do campo para o seu negócio.</p>
     <!-- Barra de Pesquisa -->
     <div class="barra-pesquisa">
-      <i class="bi bi-search"></i>
-      <input type="text" id="pesquisaProduto" placeholder="Pesquisar produto..." onkeyup="filtrarProdutos()">
-    </div>
+  <input type="text" id="pesquisaProduto" placeholder="Pesquisar produto..." onkeyup="filtrarProdutos()">
+  <i class="bi bi-search"></i>
+</div>
 
     <p id="mensagemNaoEncontrado" class="mensagem-nao-encontrado" style="display: none;">
       <i class="bi bi-emoji-frown"></i> Nenhum produto encontrado.<br>
@@ -70,40 +70,50 @@
 
       <!-- Card Produto -->
       <article class="produto-card">
-        <img src="assets/img/produtos/melancia.png" alt="Melancias" class="produto-img">
-        <h3 class="produto-titulo">Melões e Melancias</h3>
+        <img src="assets/img/produtos/amarelo.jpg" alt="Melancias" class="produto-img">
+        <h3 class="produto-titulo">Melões</h3>
         <p class="produto-texto">Suculentos, doces e sempre fresquinhos.</p>
-        <button class="btn btn-primario">
+        <button class="btn btn-primario" onclick="abrirModal('melao')">
           <span class="btn-texto">Ver mais</span>
           <i class="bi bi-search"></i>
         </button>
+
       </article>
 
       <article class="produto-card">
-        <img src="assets/img/produtos/banana.png" alt="Bananas" class="produto-img">
-        <h3 class="produto-titulo">Bananas</h3>
+        <img src="assets/img/produtos/melancia.jpeg" alt="Bananas" class="produto-img">
+        <h3 class="produto-titulo">Melancias</h3>
         <p class="produto-texto">Diversas variedades com qualidade premium.</p>
-        <button class="btn btn-primario">
+        <button class="btn btn-primario" onclick="abrirModal('melancia')">
           <span class="btn-texto">Ver mais</span>
           <i class="bi bi-search"></i>
         </button>
       </article>
 
       <article class="produto-card">
-        <img src="assets/img/produtos/uvas.png" alt="Uvas" class="produto-img">
+        <img src="assets/img/produtos/uva1.jpg" alt="Uvas" class="produto-img">
         <h3 class="produto-titulo">Uvas</h3>
         <p class="produto-texto">Doce, fresca e ideal para consumo imediato.</p>
-        <button class="btn btn-primario">
+        <button class="btn btn-primario" onclick="abrirModal('uva')">
           <span class="btn-texto">Ver mais</span>
           <i class="bi bi-search"></i>
         </button>
       </article>
 
       <article class="produto-card">
-        <img src="assets/img/produtos/abacaxi.png" alt="Abacaxi" class="produto-img">
+        <img src="assets/img/produtos/abacaxi.jpg" alt="Abacaxi" class="produto-img">
         <h3 class="produto-titulo">Abacaxis</h3>
         <p class="produto-texto">Sabor tropical para o seu negócio.</p>
-        <button class="btn btn-primario">
+        <button class="btn btn-primario" onclick="abrirModal ('abacaxi')">
+          <span class="btn-texto">Ver mais</span>
+          <i class="bi bi-search"></i>
+        </button>
+      </article>
+      <article class="produto-card">
+        <img src="assets/img/produtos/keitt.jpg" alt="Manga" class="produto-img">
+        <h3 class="produto-titulo">Mangas</h3>
+        <p class="produto-texto">Sabor tropical para o seu negócio.</p>
+        <button class="btn btn-primario" onclick="abrirModal ('manga')">
           <span class="btn-texto">Ver mais</span>
           <i class="bi bi-search"></i>
         </button>
@@ -128,15 +138,6 @@
       </article>
       <article class="produto-card">
         <img src="assets/img/produtos/abacaxi.png" alt="Abacaxi" class="produto-img">
-        <h3 class="produto-titulo">Mangas</h3>
-        <p class="produto-texto">Sabor tropical para o seu negócio.</p>
-        <button class="btn btn-primario">
-          <span class="btn-texto">Ver mais</span>
-          <i class="bi bi-search"></i>
-        </button>
-      </article>
-      <article class="produto-card">
-        <img src="assets/img/produtos/abacaxi.png" alt="Abacaxi" class="produto-img">
         <h3 class="produto-titulo">Abacates</h3>
         <p class="produto-texto">Sabor tropical para o seu negócio.</p>
         <button class="btn btn-primario">
@@ -147,14 +148,56 @@
 
 
     </div>
+    <!-- Modal Produto -->
+    <div id="modalProduto" class="modal-produto">
+      <div class="modal-conteudo">
+
+        <!-- Botão Fechar -->
+        <button class="modal-fechar" onclick="fecharModal()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+
+        <!-- Imagem -->
+        <div class="modal-imagem">
+          <img id="modalImagem" src="" alt="Produto">
+        </div>
+
+        <!-- Texto -->
+        <div class="modal-texto">
+          <h2 id="modalTitulo"></h2>
+          <p id="modalDescricao"></p>
+
+          <div class="impact-characters">
+            
+          </div>
+
+
+          <!-- Botões de navegação -->
+          <div class="modal-botoes">
+            <button class="btn btn-primario" onclick="anteriorProduto()">
+              <i class="bi bi-arrow-left"></i> Anterior
+            </button>
+            <button class="btn btn-primario" onclick="proximoProduto()">
+              Próximo <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
+
+
+
+
 
   <!-- Footer -->
   <footer>
     <div class="footer-container">
-      <p>&copy; 2025 Frutamina. Todos os direitos reservados.</p>
+      <p class="frutamina">&copy; 2025 Frutamina. Todos os direitos reservados.</p>
       <a href="https://spedrooliveira.github.io/site-pedro/" target="_blank">
-        <p>Desenvolvido por Pedro Santos <i class="bi bi-github"></i></p>
+        <button class="btn-footer">
+          <p class="pedro">Desenvolvido por Pedro Santos <i class="bi bi-github"></i></p>
+        </button>
       </a>
     </div>
   </footer>

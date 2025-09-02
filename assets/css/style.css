@@ -38,7 +38,7 @@
 
 html {
   scroll-behavior: smooth;
-  
+
 }
 
 .container {
@@ -67,7 +67,7 @@ i {
 }
 
 button {
-  border: var(--cor-texto) 1px solid;
+  border: var(--cor-texto) 2.5px solid;
   background: none;
   cursor: pointer;
 }
@@ -897,17 +897,41 @@ h4 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 }
 
 .footer-container i {
   padding-left: .5rem;
 }
 
-.footer-container a:hover,
-.footer-container a:hover i {
-  color: var(--cor-hover);
-  transition: all 0.3s ease-in-out;
+.pedro {
+  color: var(--cor-texto);
+  font-family: var(--fonte-escrita);
+  font-size: 1rem;
+}
 
+.btn-footer {
+  border-radius: 1rem;
+  padding: .5rem;
+  color: transparent;
+  margin-top: .5rem;
+  transition: all 0.3 ease-in-out
+}
+
+.btn-footer:hover {
+  transform: translateY(-3px);
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+.pedro:hover i,
+.pedro i {
+  color: var(--cor-texto);
+}
+
+.frutamina {
+  font-size: 1rem;
 }
 
 /* Páginas produtos */
@@ -934,7 +958,8 @@ h4 {
 
 .barra-pesquisa input {
   width: 100%;
-  padding: 0.9rem 1.2rem 0.9rem 2.8rem; /* espaço extra à esquerda pro ícone */
+  padding: 0.9rem 1.2rem 0.9rem 2.8rem;
+  /* espaço extra à esquerda pro ícone */
   font-size: 1rem;
   border: 2px solid var(--cor-fundo-secundário);
   border-radius: 0.8rem;
@@ -953,11 +978,16 @@ h4 {
 .mensagem-nao-encontrado {
   display: flex;
   flex-direction: column;
-  align-items: center;     /* centraliza horizontal */
-  justify-content: center; /* se precisar centralizar vertical */
-  text-align: center;      /* garante que o texto quebra centralizado */
-  max-width: 600px;        /* largura máxima para não ficar muito largo */
-  margin: 2rem auto;       /* centraliza o bloco no meio da tela */
+  align-items: center;
+  /* centraliza horizontal */
+  justify-content: center;
+  /* se precisar centralizar vertical */
+  text-align: center;
+  /* garante que o texto quebra centralizado */
+  max-width: 600px;
+  /* largura máxima para não ficar muito largo */
+  margin: 2rem auto;
+  /* centraliza o bloco no meio da tela */
   font-size: 1.5rem;
   font-family: var(--fonte-textos);
   color: var(--cor-icone);
@@ -978,13 +1008,17 @@ h4 {
 }
 
 .mensagem-botao .btn {
-  padding: 1rem 2rem;     /* mais alto e mais largo */
-  font-size: 1.2rem;      /* aumenta o texto */
-  border-radius: 1rem;    /* cantos mais suaves */
+  padding: 1rem 2rem;
+  /* mais alto e mais largo */
+  font-size: 1.2rem;
+  /* aumenta o texto */
+  border-radius: 1rem;
+  /* cantos mais suaves */
 }
 
 .mensagem-botao .btn i {
-  font-size: 1.3rem;      /* ícone maior */
+  font-size: 1.3rem;
+  /* ícone maior */
 }
 
 
@@ -993,7 +1027,13 @@ h4 {
 
 .produtos-page {
   padding-top: 7rem;
-  text-align: center;
+  padding-bottom: 4rem;
+  /* espaço antes do footer */
+  min-height: 60vh;
+  /* mantém altura mínima da seção */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .produtos-page h1 {
@@ -1022,14 +1062,29 @@ h4 {
 /* Card Produto */
 
 .produtos-page {
-  padding-bottom: 4rem; /* cria espaço no final */
+  padding-top: 7rem;
+  padding-bottom: 4rem;
+  /* espaço antes do footer */
+  min-height: 60vh;
+  /* mantém altura mínima da seção */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
+
+.produtos-page h1,
+.produtos-page p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .produto-card {
   background-color: var(--cor-fundo-secundário);
   padding: 1.5rem;
   border-radius: 1rem;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1038,7 +1093,7 @@ h4 {
 
 .produto-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .produto-img {
@@ -1067,9 +1122,295 @@ h4 {
 }
 
 .produto-card .btn {
-  margin-top: auto;  /* empurra o botão para a base */
+  margin-top: auto;
+  /* empurra o botão para a base */
   align-self: center;
 }
+
+/* POUP-UP */
+
+.modal-produto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(18, 18, 18, 0.95);
+  display: none;
+  /* só aparece quando abrir */
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+.modal-conteudo {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  color: var(--cor-texto);
+  position: relative;
+}
+
+.modal-imagem {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-imagem img {
+  max-width: 100%;
+  border-radius: 1rem;
+  pointer-events: none;
+}
+
+.modal-texto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-texto h2 {
+  font-family: var(--fonte-titulos2);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.modal-texto p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-family: var(--fonte-textos);
+  color: white;
+}
+
+.modal-botoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  color: white;
+}
+
+.modal-fechar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--cor-texto);
+  color: white;
+}
+
+.modal-conteudo {
+  background: rgba(28, 28, 28, 0.9);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.3s ease;
+  position: relative;
+}
+
+.modal-imagem img {
+  border-radius: 1rem;
+  max-height: 450px;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.modal-texto h2 {
+  font-size: 2.4rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: var(--fonte-titulos2);
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.modal-texto p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #ccc;
+  max-width: 500px;
+}
+
+/* IMPACT NUMBERS */
+
+/* Título do popup já está centralizado, mas garantimos */
+#modalTitulo {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Descrição centralizada e branca */
+#modalDescricao {
+  color: #fff;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  /* aumenta o respiro antes dos impact */
+
+}
+
+/* Impact Characters em branco e centralizados */
+/* === IMPACT CARDS COM BORDA UNIFORME === */
+.impact-characters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  margin-top: 1.5rem;
+}
+
+.impact-characters .character {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.impact-characters .character:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.impact-characters i {
+  font-size: 1.5rem;
+  color: #2ecc71;
+  background: rgba(46, 204, 113, 0.1);
+  padding: 8px;
+  border-radius: 50%;
+}
+
+
+.impact-characters .character span {
+  color: #fff;
+  /* garante que o span também fique branco */
+}
+
+.impact-characters .character {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.impact-characters .character:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.modal-content {
+  animation: fadeInUp 0.4s ease;
+}
+
+/* BOTÕES POUP UP */
+
+.modal-botoes button {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.modal-botoes button:hover {
+  background: #2ecc71;
+  /* verde elegante */
+  border-color: #2ecc71;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.modal-botoes {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.modal-texto {
+  padding-bottom: 4rem;
+  /* espaço extra para não sobrepor os botões */
+  color: white;
+}
+
+
+
+/* botão fechar */
+
+.modal-fechar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s ease;
+}
+
+.modal-fechar:hover {
+  background: #ff4d4d;
+  box-shadow: 0 0 10px #ff4d4d;
+  transform: rotate(90deg);
+}
+
+
+
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+
+
+
+
 
 /* Responsivo */
 @media (max-width: 1024px) {
@@ -1082,9 +1423,16 @@ h4 {
   .grid-produtos {
     grid-template-columns: 1fr;
   }
+
   .produtos-page h1 {
     font-size: 2rem;
     letter-spacing: 3px;
+  }
+}
+
+@media (min-height: 800px) {
+  .produtos-page {
+    min-height: 70vh;
   }
 }
 
@@ -1093,9 +1441,7 @@ h4 {
 
 /* Responsivo */
 
-@media (min-width: 768px) {
-  
-}
+
 
 @media (max-width: 768px) {
 
@@ -1103,7 +1449,7 @@ h4 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
-  
+
   h1 {
     font-size: 2.8rem;
   }
@@ -1195,15 +1541,47 @@ h4 {
     flex-direction: column;
   }
 
-  .produtos-card, .produtos-card2 {
+  .produtos-card,
+  .produtos-card2 {
     flex-direction: column;
     gap: 1.5rem;
   }
+
   .card-cover {
     width: 100%;
     height: auto;
   }
+
+  /* Produtos animação */
+
+  .produtos-page h1,
+  .produtos-page p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .modal-conteudo {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .modal-botoes {
+    position: static;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 4rem;
+  }
+
+  .modal-texto {
+    padding-bottom: 0;
+  }
 }
+
+
 
 
 @media (max-width: 480px) {
