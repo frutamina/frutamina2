@@ -41,15 +41,61 @@
     </div>
   </header>
 
+  <!-- Menu Mobile -->
+  <nav id="menuMobile" class="menu menu-principal menu-mobile">
+    <!-- Botão de fechar -->
+    <button class="btn-fechar-mobile" onclick="document.getElementById('menuMobile').classList.remove('active')">
+      <i class="bi bi-x-lg"></i>
+    </button>
+
+
+
+    <!-- Links com ícones -->
+    <ul class="menu-lista">
+      <li class="menu-item">
+        <a href="index.html" class="menu-link">
+          <i class="bi bi-house-door"></i>
+          <span>Home</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="index.html" class="menu-link">
+          <i class="bi bi-basket"></i>
+          <span>Produtos</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="index.html/#sobre" class="menu-link">
+          <i class="bi bi-info-circle"></i>
+          <span>Sobre</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="index.html/#contato" class="menu-link">
+          <i class="bi bi-telephone"></i>
+          <span>Contato</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Redes sociais (opcional, mas enche espaço) -->
+    <div class="menu-social-mobile">
+      <a href="https://www.instagram.com/frutamina.oficial/" target="_blank"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.tiktok.com/@frutamina.oficial" target="_blank"><i class="bi bi-tiktok"></i></a>
+      <a href="tel:3641-4352" target="_blank"><i class="bi bi-telephone"></i></a>
+
+    </div>
+  </nav>
+
   <!-- Seção Produtos -->
   <main class="produtos-page container">
     <h1>Nossos Produtos</h1>
     <p class="descricao">Frutas frescas e selecionadas, direto do campo para o seu negócio.</p>
     <!-- Barra de Pesquisa -->
     <div class="barra-pesquisa">
-  <input type="text" id="pesquisaProduto" placeholder="Pesquisar produto..." onkeyup="filtrarProdutos()">
-  <i class="bi bi-search"></i>
-</div>
+      <input type="text" id="pesquisaProduto" placeholder="Pesquisar produto..." onkeyup="filtrarProdutos()">
+      <i class="bi bi-search"></i>
+    </div>
 
     <p id="mensagemNaoEncontrado" class="mensagem-nao-encontrado" style="display: none;">
       <i class="bi bi-emoji-frown"></i> Nenhum produto encontrado.<br>
@@ -70,6 +116,16 @@
 
       <!-- Card Produto -->
       <article class="produto-card">
+        <img src="assets/img/produtos/am-rei.jpg" alt="Melancias" class="produto-img">
+        <h3 class="produto-titulo">Familia Itaueira</h3>
+        <p class="produto-texto">Produtos premium da linha itaueira.</p>
+        <button class="btn btn-primario" onclick="abrirModal('itaueira')">
+          <span class="btn-texto">Ver mais</span>
+          <i class="bi bi-search"></i>
+        </button>
+        </article>
+
+      <article class="produto-card">
         <img src="assets/img/produtos/amarelo.jpg" alt="Melancias" class="produto-img">
         <h3 class="produto-titulo">Melões</h3>
         <p class="produto-texto">Suculentos, doces e sempre fresquinhos.</p>
@@ -81,10 +137,30 @@
       </article>
 
       <article class="produto-card">
-        <img src="assets/img/produtos/melancia.jpeg" alt="Bananas" class="produto-img">
+        <img src="assets/img/produtos/melancia.png" alt="Bananas" class="produto-img">
         <h3 class="produto-titulo">Melancias</h3>
         <p class="produto-texto">Diversas variedades com qualidade premium.</p>
         <button class="btn btn-primario" onclick="abrirModal('melancia')">
+          <span class="btn-texto">Ver mais</span>
+          <i class="bi bi-search"></i>
+        </button>
+      </article>
+
+      <article class="produto-card">
+        <img src="assets/img/produtos/pamarelo.jpg" alt="pimentao-amarelo" class="produto-img">
+        <h3 class="produto-titulo">Pimentões</h3>
+        <p class="produto-texto">3 Variedades: vermelho, amarelo e laranja. Com a melhor qualidade do mercado</p>
+        <button class="btn btn-primario" onclick="abrirModal('pimentao')">
+          <span class="btn-texto">Ver mais</span>
+          <i class="bi bi-search"></i>
+        </button>
+      </article>
+
+      <article class="produto-card">
+        <img src="assets/img/produtos/melv.jpg" alt="mel" class="produto-img">
+        <h3 class="produto-titulo">Mel</h3>
+        <p class="produto-texto">temos </p>
+        <button class="btn btn-primario" onclick="abrirModal('mel')">
           <span class="btn-texto">Ver mais</span>
           <i class="bi bi-search"></i>
         </button>
@@ -119,7 +195,7 @@
         </button>
       </article>
       <article class="produto-card">
-        <img src="assets/img/produtos/abacaxi.png" alt="Abacaxi" class="produto-img">
+        <img src="assets/img/produtos/abacaxi.png" alt="Pitaya" class="produto-img">
         <h3 class="produto-titulo">Pitaya</h3>
         <p class="produto-texto">Sabor tropical para o seu negócio.</p>
         <button class="btn btn-primario">
@@ -128,16 +204,16 @@
         </button>
       </article>
       <article class="produto-card">
-        <img src="assets/img/produtos/abacaxi.png" alt="Abacaxi" class="produto-img">
+        <img src="assets/img/produtos/morango.jpg" alt="morango" class="produto-img">
         <h3 class="produto-titulo">Morangos</h3>
         <p class="produto-texto">Sabor tropical para o seu negócio.</p>
-        <button class="btn btn-primario">
+        <button class="btn btn-primario" onclick="abrirModal ('morango')">
           <span class="btn-texto">Ver mais</span>
           <i class="bi bi-search"></i>
         </button>
       </article>
       <article class="produto-card">
-        <img src="assets/img/produtos/abacaxi.png" alt="Abacaxi" class="produto-img">
+        <img src="assets/img/produtos/abacaxi.png" alt="abacate" class="produto-img">
         <h3 class="produto-titulo">Abacates</h3>
         <p class="produto-texto">Sabor tropical para o seu negócio.</p>
         <button class="btn btn-primario">
@@ -168,7 +244,7 @@
           <p id="modalDescricao"></p>
 
           <div class="impact-characters">
-            
+
           </div>
 
 

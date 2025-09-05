@@ -24,6 +24,7 @@
   --cor-azul-contato: #2563eb;
   --cor-azul-hover: #1d4ed8;
   --cor-botão: #000;
+
 }
 
 :root[data-theme="dark"] {
@@ -40,6 +41,7 @@ html {
   scroll-behavior: smooth;
 
 }
+
 
 .container {
   margin: 0 auto;
@@ -268,37 +270,95 @@ h4 {
 
 /* MENU MOBILE */
 
+/* ===== MENU MOBILE MODERNO ===== */
 .menu-mobile {
   position: fixed;
   top: 0;
   right: 0;
   z-index: 50;
-  transform: translateX(100%);
+  width: 75%;
+  height: 100%;
+  background: var(--cor-fundo-secundário);
+  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
-  padding-top: 5rem;
-  border-left: 1px solid var(--cor-borda);
-  height: 100%;
-  width: 75%;
-  transition: transform 0.6s ease-in-out;
-  background-color: var(--cor-fundo-secundário);
+  padding: 2rem 1.5rem;
+  transform: translateX(100%);
+  transition: transform 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
 }
 
 .menu-mobile.active {
-  transform: translateX(0%);
+  transform: translateX(0);
+  opacity: 1;
 }
 
-.menu-mobile .menu-lista {
-  width: 100%;
+.btn-fechar-mobile {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.menu-logo-mobile {
   text-align: center;
+  margin-bottom: 2rem;
 }
 
-.menu-mobile .menu-link {
-  display: inline-block;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 1rem 0;
+.menu-logo-mobile img {
+  width: 120px;
+  height: auto;
 }
+
+.menu-lista {
+  list-style: none;
+  flex: 1;
+}
+
+.menu-lista .menu-item {
+  margin-bottom: 1.2rem;
+}
+
+.menu-lista .menu-link {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.menu-lista .menu-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.menu-lista .menu-link i {
+  font-size: 1.3rem;
+  color: var(--cor-azul-contato);
+}
+
+.menu-social-mobile {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.menu-social-mobile a {
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
+}
+
+.menu-social-mobile i:hover {
+  color: var(--cor-azul-contato);
+  transition: 0.3s ease-in-out;
+}
+
 
 /* Corpo */
 
@@ -306,7 +366,7 @@ h4 {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding-top: 6rem;
+  padding-top: 2rem;
 }
 
 .banner {
@@ -654,6 +714,7 @@ h4 {
 .contato {
   padding: 5rem 0 2rem;
   background-color: var(--cor-fundo-primário);
+  transition: 0.3s ease-in-out;
 }
 
 .contato h2 {
@@ -674,6 +735,7 @@ h4 {
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   min-height: 600px;
+  transition: 0.3s ease-in-out;
 }
 
 /* Lado Esquerdo - Informações */
@@ -755,7 +817,7 @@ h4 {
 
 /* Lado Direito - Formulário */
 .contato-form {
-  background-color: var(--cor-fundo-primário);
+  background-color: var(--cor-fundo-secundário);
   padding: 3rem 2.5rem;
   display: flex;
   flex-direction: column;
@@ -780,6 +842,7 @@ h4 {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
 }
 
 .form-row {
@@ -808,7 +871,7 @@ h4 {
   font-family: var(--fonte-textos);
   background-color: var(--cor-fundo-primário);
   color: var(--cor-texto);
-  transition: all 0.3s ease;
+  transition: 0.3s ease-in-out;
 }
 
 .form-group input:focus,
@@ -816,6 +879,7 @@ h4 {
   outline: none;
   border-color: var(--cor-azul-contato);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+
 }
 
 .form-group input::placeholder,
@@ -880,6 +944,54 @@ h4 {
   gap: 2rem;
 }
 
+/* MENSAGEM */
+
+/* ====== Contato - Feedback & Estados ====== */
+.form-alert {
+  margin: 12px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .25s ease, transform .25s ease;
+  min-height: 1em;
+  font-family: var(--fonte-textos);
+}
+
+.form-alert.success {
+  color: #1a7f37;
+  /* verde */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.error-msg {
+  color: red;
+  font-size: 0.85rem;
+  display: none;
+  font-family: var(--fonte-escrita);
+}
+
+input.error {
+  border: 1px solid red;
+}
+
+
+.btn-enviar[disabled] {
+  opacity: .7;
+  cursor: not-allowed;
+}
+
+/* Dark mode compatível */
+body.dark .form-alert.success {
+  color: #3ddc84;
+}
+
+body.dark .form-alert.error {
+  color: #ff6b6b;
+}
+
+
 .footer-container {
   background-color: var(--cor-fundo-secundário);
   padding: 1rem 0;
@@ -904,23 +1016,34 @@ h4 {
   padding-left: .5rem;
 }
 
-.pedro {
-  color: var(--cor-texto);
-  font-family: var(--fonte-escrita);
-  font-size: 1rem;
-}
-
 .btn-footer {
-  border-radius: 1rem;
-  padding: .5rem;
-  color: transparent;
-  margin-top: .5rem;
-  transition: all 0.3 ease-in-out
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  margin-top: 0.5rem;
+  border-radius: 2rem;
+  /* mais arredondado */
+  font-size: .9rem;
+  font-weight: 600;
+  color: #fff;
+  /* texto branco */
+  background: linear-gradient(135deg, #2a7d2e, #45b649);
+  /* degradê verde */
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  /* sombra suave */
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  border: none;
 }
 
 .btn-footer:hover {
-  transform: translateY(-3px);
-  transition: all 0.3s ease-in-out;
+  transform: translateY(-4px) scale(1.05);
+  /* leve aumento ao hover */
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  /* sombra mais forte */
+  background: linear-gradient(135deg, #45b649, #45b649);
+  /* inverte o degradê */
 }
 
 
@@ -971,8 +1094,7 @@ h4 {
 }
 
 .barra-pesquisa input:focus {
-  border-color: var(--cor-azul-contato);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: var(--cor-hover);
 }
 
 .mensagem-nao-encontrado {
@@ -1098,7 +1220,7 @@ h4 {
 
 .produto-img {
   width: 100%;
-  height: 200px;
+  height: auto;
   object-fit: contain;
   margin-bottom: 1rem;
   border-radius: 1rem;
@@ -1391,6 +1513,12 @@ h4 {
 }
 
 
+/* PÁGINA SOBRE  */
+
+/* PÁGINA SOBRE */
+
+
+
 
 
 
@@ -1413,6 +1541,28 @@ h4 {
 
 
 /* Responsivo */
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  .subtitulo-h1 {
+    font-size: 2.2rem;
+  }
+}
+
+
+@media (max-width: 992px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .subtitulo-h1 {
+    font-size: 1.8rem;
+  }
+}
+
+
 @media (max-width: 1024px) {
   .grid-produtos {
     grid-template-columns: repeat(2, 1fr);
@@ -1438,8 +1588,6 @@ h4 {
 
 
 
-
-/* Responsivo */
 
 
 
